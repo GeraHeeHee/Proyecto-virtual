@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://h2s6a4r83471"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
+sky_top_color = Color(0.5011934, 0.1980927, 0.9965082, 1)
+sky_horizon_color = Color(0.8673812, 0.5285697, 0.72217774, 1)
+ground_bottom_color = Color(0.09914077, 0.089146234, 0.47249615, 1)
+ground_horizon_color = Color(0.9011307, 0.5047962, 0.7130973, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+ambient_light_color = Color(0.7278749, 0.65550655, 0.73624235, 1)
+ambient_light_sky_contribution = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(0.4627451, 0.105882354, 0.8392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ig7tw"]
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0xm2m"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.96294165, 0.26970986, 0, -0.26970986, -0.96294165, 0, 3.7723272, -10.765732)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02116394, -0.33129883, -4.640259)
+use_collision = true
+size = Vector3(7.22171, 0.33740234, 10.280518)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4056644, 0.06390381, -4.640259)
+use_collision = true
+size = Vector3(0.62225723, 1.1278076, 10.280518)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2731905, 0.061950684, -4.640259)
+use_collision = true
+size = Vector3(0.62225723, 1.1239014, 10.280518)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078884125, 0.07055664, 0.2164917)
+use_collision = true
+size = Vector3(7.2981424, 1.1411133, 0.5670166)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078884125, 0.027770996, -9.804112)
+use_collision = true
+size = Vector3(7.2981424, 1.055542, 0.5670166)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0969057, 2.2303967)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1562662, -6.7603965)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_0xm2m")
