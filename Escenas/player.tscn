@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ydbni5e5p8m"]
+
+[ext_resource type="Script" uid="uid://csu3ewut58jj2" path="res://Escenas/player.gd" id="1_cnkc8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1k8jn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1opfl"]
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 4.94566e-09, 0, -4.692277e-09, 1.054, 0, 0, 0, 0.98, 0, 0, 0)
+mass = 3.826
+can_sleep = false
+script = ExtResource("1_cnkc8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 7.450582e-10, 0, -7.450582e-10, 0.2, 0, 0, 0, 0.2, 0.008444667, 0.0007072687, -0.004638672)
+mesh = SubResource("SphereMesh_1k8jn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0072437525, -0.009150982, -0.017570496)
+shape = SubResource("SphereShape3D_1opfl")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(0.08917615, 0.8311088, 0.54891324, -0.50575286, 0.47947055, -0.6438013, -0.85853326, -0.23683026, 0.49806118, 0.65129405, -0.820039, 0.6370547)
+keep_aspect = 0
